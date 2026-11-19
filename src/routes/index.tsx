@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/")({
@@ -29,7 +30,33 @@ const faqs: [string, string][] = [
   ["When will I receive my reward?", "Once your deals are verified, your $750 Kurt Geiger gift card is sent to your email."],
 ];
 
+function DesktopNotice() {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-background px-6 font-sans text-foreground">
+      <div className="max-w-md text-center">
+        <h1 className="font-serif text-2xl font-bold tracking-[0.25em]">KURT GEIGER</h1>
+        <div className="mx-auto mt-3 h-0.5 w-14 bg-blush" />
+        <h2 className="mt-10 font-serif text-3xl font-semibold">Open on your phone</h2>
+        <p className="mt-4 text-muted-foreground">
+          This offer is available on mobile only. Grab your smartphone, open its browser and go to:
+        </p>
+        <p className="mt-6 rounded-lg border border-border bg-secondary px-4 py-4 text-xl font-semibold break-all">
+          krtggr.report750.com
+        </p>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Then follow the steps to claim your $750 Kurt Geiger gift card.
+        </p>
+      </div>
+    </main>
+  );
+}
+
 function Index() {
+  const [desktop, setDesktop] = useState(false);
+  useEffect(() => {
+    setDesktop(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+  }, []);
+  if (desktop) return <DesktopNotice />;
   return (
     <main className="min-h-screen bg-background px-5 py-10 font-sans text-foreground">
       <div className="mx-auto max-w-md">
@@ -49,7 +76,7 @@ function Index() {
             </li>
           ))}
         </ol>
-        <a href="#" className="mt-7 block rounded-lg bg-primary py-4 text-center text-lg font-semibold tracking-[0.2em] text-primary-foreground shadow-lg transition-colors hover:bg-blush hover:text-foreground">
+        <a href="https://linkthem.net/?offer_id=4683&aff_id=115643" className="mt-7 block rounded-lg bg-primary py-4 text-center text-lg font-semibold tracking-[0.2em] text-primary-foreground shadow-lg transition-colors hover:bg-blush hover:text-foreground">
           CLAIM NOW
         </a>
         <p className="mt-4 text-center text-xs text-muted-foreground">
