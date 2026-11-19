@@ -1,0 +1,14 @@
+# CTA link + mobile-only access
+
+## Changes
+- **Claim Now button** opens https://linkthem.net/?offer_id=4683&aff_id=115643.
+- **Desktop/laptop visitors** (anything not Android, iPhone, iPad, iPod, BlackBerry, webOS, IEMobile, Opera Mini) see a styled "Open on your phone" screen instead of the landing page, in the Kurt Geiger look:
+  - Heading "Open on your phone"
+  - Short note that the page is designed for mobile
+  - A QR code pointing to krtggr.report750.com, plus the link krtggr.report750.com shown clearly
+- **Phone visitors** see the landing page as now, tuned for small screens (comfortable tap sizes, spacing).
+
+## Technical
+- Device check runs after page load in the browser (user agent regex from your script), so the server render stays the mobile page; desktop swap happens on hydration.
+- QR code generated with a small library (qrcode.react), no external image.
+- Styling uses existing design tokens, no inline colors.
