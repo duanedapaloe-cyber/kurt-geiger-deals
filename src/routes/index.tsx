@@ -22,7 +22,7 @@ const steps = [
   "Enjoy your $750 Kurt Geiger gift card!",
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["How long do the deals take?", "Most deals take just a few minutes each to complete."],
   ["What are deals?", "Deals are offers from our sponsors, such as trials, sign-ups or purchases."],
   ["How many deals do I have to do?", "You need to complete 4-5 sponsored deals to qualify."],
